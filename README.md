@@ -8,7 +8,7 @@ Tensorflow 2 code repository for *Generative Adversarial Registration for Improv
 `train_script.py` is the main template construction script
 that implements all methods considered in the paper for the 3D datasets. 
 
-The current code repository will be heavily refactored (e.g., improving data loading, better abstraction). FFHQ-Aging scripts only require a 
+The current code repository will be heavily refactored (e.g., improving data loading, better abstraction) in the coming days and weeks. FFHQ-Aging scripts only require a 
 change from 3D to 2D and will be added as well.
 
 ## Dependencies
