@@ -1,5 +1,5 @@
 # Generative Adversarial Template Construction
-### [Project Page](https://www.neeldey.com/deformable-templates/) | [Paper](https://drive.google.com/file/d/1W29kHKU5BUY6EK1Wyuklt5y98j3nPGZE/view?usp=sharing)
+### [Project Page](https://www.neeldey.com/deformable-templates/) | [Paper](https://arxiv.org/abs/2105.04349)
 
 ![dHCP Templates](https://www.neeldey.com/deformable-templates/img/dhcp-cond.gif)
 
