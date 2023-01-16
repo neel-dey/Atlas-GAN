@@ -10,28 +10,38 @@ import tensorflow as tf
 
 
 @tf.function
-def disc_augment(image_batch, flip_choice, intensity_mods=False):
+def disc_augment(image_batch, intensity_mods=False):
     """
     Return augmented training arrays. Args:
         image_batch: tf tensor of batch to augment
-        flip_choice: tf tensor containing (int) choice of flip augmentation.
+        # flip_choice: tf tensor containing (int) choice of flip augmentation.
         intensity_mods: bool indicating whether to use intensity augmentation.
     """
 
-    # 50% of the time do random left-right reflections:
+    # 50% of the time flip along axis 1
+    if tf.random.uniform((1,)) > 0.5:
+        image_batch = tf.reverse(image_batch, axis=[1])
+    # 50% of the time flip along axis 2
+    if tf.random.uniform((1,)) > 0.5:
+        image_batch = tf.reverse(image_batch, axis=[2])
+    # 50% of the time flip along axis 3
     if tf.random.uniform((1,)) > 0.5:
         image_batch = tf.reverse(image_batch, axis=[3])
 
-    # Other flips
-    # TODO: figure out a cleaner way of doing this
-    if flip_choice == 0:
-        pass
-    elif flip_choice == 1:
-        image_batch = tf.reverse(image_batch, axis=[1])
-    elif flip_choice == 2:
-        image_batch = tf.reverse(image_batch, axis=[2])
-    elif flip_choice == 3:
-        image_batch = tf.reverse(tf.reverse(image_batch, axis=[2]), axis=[1])
+    # # 50% of the time do random left-right reflections:
+    # if tf.random.uniform((1,)) > 0.5:
+    #     image_batch = tf.reverse(image_batch, axis=[3])
+    #
+    # # Other flips
+    # # TODO: figure out a cleaner way of doing this
+    # if flip_choice == 0:
+    #     pass
+    # elif flip_choice == 1:
+    #     image_batch = tf.reverse(image_batch, axis=[1])
+    # elif flip_choice == 2:
+    #     image_batch = tf.reverse(image_batch, axis=[2])
+    # elif flip_choice == 3:
+    #     image_batch = tf.reverse(tf.reverse(image_batch, axis=[2]), axis=[1])
 
     # Random Intensity:
     if intensity_mods:

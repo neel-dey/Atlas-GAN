@@ -434,8 +434,8 @@ def disc_train_step(
         epoch: tf tensor of training step.
     """
     # Reorient image for more augs. Pick a flip (subset of D_4h group):
-    real_choice = tf.random.uniform((1,), 0, 4, dtype=tf.int32)
-    fake_choice = tf.random.uniform((1,), 0, 4, dtype=tf.int32)
+    # real_choice = tf.random.uniform((1,), 0, 4, dtype=tf.int32)
+    # fake_choice = tf.random.uniform((1,), 0, 4, dtype=tf.int32)
 
     with tf.GradientTape() as disc_tape:
         # Generator forward pass:
@@ -446,10 +446,10 @@ def disc_train_step(
 
         # Discriminator augmentation sequence on both fakes and reals:
         moved_atlases = disc_augment(
-            moved_atlases, fake_choice, intensity_mods=False,
+            moved_atlases, intensity_mods=False,
         )
         real_images = disc_augment(
-            real_images, real_choice, intensity_mods=False,
+            real_images, intensity_mods=False,
         )
 
         # Discriminator forward passes:
